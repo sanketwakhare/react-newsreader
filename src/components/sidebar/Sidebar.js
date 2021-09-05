@@ -1,21 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import './sidebar.css';
+import React, { useEffect, useState } from "react";
+import "./sidebar.css";
 
-export default function Sidebar() {
+export default function Sidebar(props) {
   const [categories, setCategories] = useState([]);
 
+  // https://jsonplaceholder.typicode.com/todos
   function getCategories() {
-    return fetch('https://jsonplaceholder.typicode.com/todos').then(data =>
+    return fetch("http://localhost:8080/news_categories/get_all").then((data) =>
       data.json()
     );
   }
 
-  useEffect(function() {
+  const catClickHandler = (category) => {
+    props.categoryClickHandler(category);
+    let sidebarItems = document.querySelectorAll(".sidebarItem");
+    sidebarItems.forEach((item) => {
+      item.classList.remove("active");
+    });
+    let activeDiv = document.querySelector("#category_" + category.name);
+    activeDiv.classList.add("active");
+  };
+
+  const allNewsClickHandler = (category) => {
+    props.allNewsClickHandler();
+    let sidebarItems = document.querySelectorAll(".sidebarItem");
+    sidebarItems.forEach((item) => {
+      item.classList.remove("active");
+    });
+    let activeDiv = document.querySelector("#category_" + category.name);
+    activeDiv.classList.add("active");
+  };
+
+  useEffect(function () {
     let mounted = true;
-    getCategories().then(items => {
+    getCategories().then((items) => {
       if (mounted) {
         console.log(items);
         setCategories(items);
+        allNewsClickHandler({ name: "topstories" });
       }
     });
     return () => (mounted = false);
@@ -24,32 +46,33 @@ export default function Sidebar() {
   return (
     <div className="sidebarContainer">
       <div className="sidebarItemsContainer">
-        <div className="sidebarItem">Top Stories</div>
+        <div
+          id="category_topstories"
+          className="sidebarItem"
+          onClick={() => allNewsClickHandler({ name: "topstories" })}
+        >
+          Top Stories
+        </div>
         <hr />
-        {
-          // categories.map( (category, index ) => {
-          //     return <div className="sidebarItem">
-          //       {/* {category.title} */}
-          //     </div>
-          // })
-        }
-        <div className="sidebarItem">COVID 19</div>
+        {categories.map((category) => {
+          return (
+            <div
+              id={"category_" + category.name}
+              key={category.name}
+              className="sidebarItem"
+              onClick={() => catClickHandler(category)}
+            >
+              {category.name}
+            </div>
+          );
+        })}
+
         <hr />
-        <div className="sidebarItem">India</div>
-        <div className="sidebarItem">World</div>
-        <hr />
-        <div className="sidebarItem">Technology</div>
-        <div className="sidebarItem">Business</div>
-        <div className="sidebarItem">Sports</div>
-        <div className="sidebarItem">Entertainment</div>
-        <div className="sidebarItem">Science</div>
-        <div className="sidebarItem">Health</div>
-        <hr />
+        <div className="sidebarItem">Language</div>
         <div className="sidebarItem">Help</div>
         <div className="sidebarItem">Send Feedback</div>
         <div className="sidebarItem">About</div>
         <div className="sidebarItem">Settings</div>
-        <div className="sidebarItem">User</div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
   background: var(--color-background);
   position: static;
   margin-top: 50px;
+  height: 100%;
 }
 
 .sidebarItemsContainer {
@@ -25,4 +26,8 @@ hr {
   border-style: solid;
   border-width: 1px;
   border-color: var(--color-secondary);
+}
+
+.active {
+  background: var(--color-primary);
 }
