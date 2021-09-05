@@ -1,0 +1,32 @@
+.topBarContainer {
+  width: 100%;
+  height: 50px;
+  background: var(--color-primary);
+  display: flex;
+  position: fixed;
+  justify-content: space-between;
+  z-index: 999;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.logo {
+  font-size: larger;
+  font-weight: 600;
+}
+
+.iconsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  margin: 0.5rem;
+  font-weight: 600;
+}

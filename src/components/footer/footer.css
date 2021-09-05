@@ -1,0 +1,9 @@
+.footerContainer {
+  position: relative;
+  display: block;
+  background: var(--color-primary);
+  padding: 3px;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
