@@ -1,6 +1,7 @@
 .sidebarContainer {
   flex: 1;
-  background: var(--color-background);
+  /* background: var(--color-background); */
+  background: white;
   position: static;
   margin-top: 50px;
   height: 100%;
@@ -25,9 +26,11 @@
 hr {
   border-style: solid;
   border-width: 1px;
-  border-color: var(--color-secondary);
+  border-color: var(--color-background);
 }
 
 .active {
-  background: var(--color-primary);
+  /* background: var(--color-primary); */
+  box-shadow: 0px 5px 10px var(--color-background);
+  border-radius: 50px 50px 50px 50px;
 }

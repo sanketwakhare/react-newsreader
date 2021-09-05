@@ -1,12 +1,12 @@
 :root {
-  --color-primary: #f5e8c7;
-  --color-secondary: #9e7777;
+  --color-primary: #9c27b0; /*#f5e8c7;*/
+  --color-secondary: #ab003c; /*#9e7777;*/
   --color-background: #deba9d;
 }
 
 * {
   margin: 0px;
-  font-family: 'Kaisei Tokumin', serif;
+  font-family: "Kaisei Tokumin", serif;
 }
 
 .appContainer {
