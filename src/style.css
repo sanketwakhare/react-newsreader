@@ -6,7 +6,7 @@
 
 * {
   margin: 0px;
-  font-family: "Kaisei Tokumin", serif;
+  font-family: 'Kaisei Tokumin', serif;
 }
 
 .appContainer {
@@ -14,7 +14,7 @@
 }
 
 .bodyContainer {
-  flex: 4;
+  flex: 10;
   margin-top: 50px;
 }
 
